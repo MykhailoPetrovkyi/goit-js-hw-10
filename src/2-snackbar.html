@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="./css/2-snackbar.css" />
+<ul class="container">
+  <li class="container-link">
+    <a class="link" href="./index.html">Go Back</a>
+  </li>
+</ul>
+<form class="form">
+  <label class="label">
+    Delay (ms)
+    <input class="label-input" type="number" name="delay" required />
+  </label>
+
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">State</legend>
+    <label class="label-fieldset">
+      <input
+        class="input-fieldset"
+        type="radio"
+        name="state"
+        value="fulfilled"
+        required
+      />
+      Fulfilled
+    </label>
+    <label class="label-fieldset">
+      <input
+        class="input-fieldset"
+        type="radio"
+        name="state"
+        value="rejected"
+        required
+      />
+      Rejected
+    </label>
+  </fieldset>
+
+  <button class="button-form" type="submit">Create notification</button>
+</form>
+<script src="./js/2-snackbar.js" type="module"></script>
