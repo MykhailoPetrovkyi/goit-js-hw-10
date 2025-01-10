@@ -42,17 +42,27 @@ start.addEventListener('click', () => {
   timerInterval = setInterval(() => {
     let time = selectedDates - new Date();
     console.log(convertMs(time));
-    const timeComponents = convertMs(time);
-    days.textContent = pad(timeComponents.days);
-    hours.textContent = pad(timeComponents.hours);
-    minutes.textContent = pad(timeComponents.minutes);
-    seconds.textContent = pad(timeComponents.seconds);
+    if (time <= 0) {
+      clearInterval(timerInterval);
+      updateTimer(0, 0, 0, 0);
+      input.disabled = false;
+      return;
+    }
+    const { days, hours, minutes, seconds } = convertMs(time);
+    updateTimer(days, hours, minutes, seconds);
   }, 1000);
 });
 
-function pad(value) {
+const updateTimer = (day, hour, minute, second) => {
+  days.textContent = pad(day);
+  hours.textContent = pad(hour);
+  minutes.textContent = pad(minute);
+  seconds.textContent = pad(second);
+};
+
+const pad = value => {
   return String(value).padStart(2, '0');
-}
+};
 
 function convertMs(ms) {
   const second = 1000;
